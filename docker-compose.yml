@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  db:
+    image: kartoza/postgis:12.1
+    restart: always
+    environment:
+        POSTGRES_USER: tbr3_user
+        POSTGRES_PASSWORD: tbr3userdevpass
+        POSTGRES_DB: tbr3_db
+    volumes:
+      - db-data:/var/lib/postgresql/data/
+  web:
+    build: .
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - .env.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+
+
+volumes:
+  db-data:
