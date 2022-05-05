@@ -1,6 +1,6 @@
 # Tbr3 Project
 
-Tbr3 is a blood donation platform developed for the hope of making the search for blood donators easier.
+Tbr3 is a blood donation platform built using Django and Ajax, developed for the hope of making the search for blood donators easier.
 
 ## Installation (for local developement only)
 
