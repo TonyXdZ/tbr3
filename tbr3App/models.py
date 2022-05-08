@@ -2,20 +2,6 @@ from django.db import models
 from django.db.models.deletion import PROTECT
 from django.utils import timezone
 import math
-# Create your models here.
-class Zomra (models.Model):
-    zomra = [
-        ('O+','O+'),
-        ('O-','O-'),
-        ('A+','A+'),
-        ('AB+','AB+'),
-        ('A-','A-'),
-        ('AB-','AB-'),  
-    ]
-    name = models.CharField(max_length=3,choices=zomra)
-    def __str__(self):
-        return self.name
-    
 
 class Person (models.Model):
     name = models.CharField(max_length=200,default='فاعل خير')    
