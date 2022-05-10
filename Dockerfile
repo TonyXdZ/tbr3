@@ -6,6 +6,6 @@ COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 
 RUN apt-get update &&\
-    apt-get install -y binutils libproj-dev gdal-bin python-gdal python3-gdal\
+    apt-get install -y binutils libproj-dev gdal-bin python3-gdal\
     gettext libgettextpo-dev
 COPY . /code/
