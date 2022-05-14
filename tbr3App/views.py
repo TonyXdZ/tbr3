@@ -5,6 +5,7 @@ from .forms import *
 from django.core.paginator import Paginator
 import json
 from django.http import JsonResponse, response
+from django.core.exceptions import SuspiciousOperation
 import requests
 from django.contrib import messages
 # Create your views here.
@@ -40,9 +41,10 @@ def search_person(request):
             blood_type__icontains = search_str) 
         data = searchFilter.values()
         return JsonResponse(list(data),safe=False)
+    else:
+        raise SuspiciousOperation('Invalid JSON')
             
-                                      
-        
+
 def index(request):
     return render(request, 'pages/home.html')
 
