@@ -139,3 +139,7 @@ MESSAGE_TAGS = {
     
     50: 'critical',
 } 
+
+#Captcha settings
+CAPTCHA_SECRET = os.environ.get('CAPTCHA_SECRET')
+CAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'

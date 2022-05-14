@@ -1,37 +1,16 @@
-
+import json
+import requests
 from django.shortcuts import redirect, render
+from django.core.paginator import Paginator
+from django.core.exceptions import SuspiciousOperation
+from django.contrib import messages
+from django.shortcuts import HttpResponse
 from .models import *
 from .forms import *
-from django.core.paginator import Paginator
-import json
 from django.http import JsonResponse, response
-from django.core.exceptions import SuspiciousOperation
-import requests
-from django.contrib import messages
-# Create your views here.
-from django.shortcuts import HttpResponse
+from django.conf import settings
 
-""" def user_create(request):
- if request.method =='POST':    
-  userName = request.POST.get('username',None)
-  userPhone = request.POST.get('phone')
-  userWilaya = request.POST.get('wilaya', None)
-  userCommun = request.POST.get('commun', None)
-  userZomra = request.POST.get('zomra', None)
-  data = Person(name=userName, phone=userPhone,
-               wilaya=userWilaya, commun=userCommun, zomra=userZomra)
-  capatcha_token=request.POST.get('g-recaptcha-response')
-  url_cap = 'https://www.google.com/recaptcha/api/siteverify'
-  cap_secret = '6LeCUtwdAAAAAKCVA4pOBcugfwdqLEtLzHDZOuL5'
-  cap_data ={'secret':cap_secret,"response":capatcha_token}
-  cap_server_response = requests.post(url=url_cap,data=cap_data)
-  cap_json=json.loads(cap_server_response.text)
-  if cap_json['success']==False:
-    messages.error(request,' الرجاء التحقق من  reCAPTCHA ')
-  else :
-    data.save()
-    messages.success(request,'   تم نشر إعلانك بنجاح ,بارك الله فيك   ')
-    return HttpResponse()  """  
+
 def search_person(request):
     if request.method =='POST':
         search_str = json.loads(request.body).get('searchText')
@@ -50,7 +29,6 @@ def index(request):
 
 
 def search(request):
-    
     result = Person.objects.all()
     result_paginator = Paginator(result,20)
     page_num = request.GET.get('page')
@@ -73,11 +51,9 @@ def create(request):
                   wilaya=userWilaya, commune=userCommune, blood_type=userBloodtype)
     
     if request.method == 'POST':
-     capatcha_token=request.POST.get('g-recaptcha-response')
-     url_cap = 'https://www.google.com/recaptcha/api/siteverify'
-     cap_secret = '6LeCUtwdAAAAAKCVA4pOBcugfwdqLEtLzHDZOuL5'
-     cap_data ={'secret':cap_secret,"response":capatcha_token}
-     cap_server_response = requests.post(url=url_cap,data=cap_data)
+     capatcha_token = request.POST.get('g-recaptcha-response')
+     cap_data = {'secret': settings.CAPTCHA_SECRET, "response": capatcha_token}
+     cap_server_response = requests.post(url=settings.CAPTCHA_URL, data=cap_data)
      cap_json=json.loads(cap_server_response.text)
      if cap_json['success']==False:
          messages.error(request,' الرجاء التحقق من  reCAPTCHA ')
