@@ -35,9 +35,9 @@ def search_person(request):
     if request.method =='POST':
         search_str = json.loads(request.body).get('searchText')
         searchFilter =Person.objects.filter(
-            commun__icontains = search_str)| Person.objects.filter(
+            commune__icontains = search_str)| Person.objects.filter(
             wilaya__icontains = search_str)| Person.objects.filter(
-            zomra__icontains = search_str) 
+            blood_type__icontains = search_str) 
         data = searchFilter.values()
         return JsonResponse(list(data),safe=False)
             
@@ -65,10 +65,10 @@ def create(request):
     userName = request.POST.get('username')
     userPhone = request.POST.get('phone')
     userWilaya = request.POST.get('wilaya', None)
-    userCommun = request.POST.get('commun', None)
-    userZomra = request.POST.get('zomra', None)
+    userCommune = request.POST.get('commune', None)
+    userBloodtype = request.POST.get('blood_type', None)
     data = Person(name=userName, phone=userPhone,
-                  wilaya=userWilaya, commun=userCommun, zomra=userZomra)
+                  wilaya=userWilaya, commune=userCommune, blood_type=userBloodtype)
     
     if request.method == 'POST':
      capatcha_token=request.POST.get('g-recaptcha-response')

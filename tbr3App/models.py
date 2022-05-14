@@ -1,16 +1,28 @@
 from django.db import models
 from django.db.models.deletion import PROTECT
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 import math
 
-class Person (models.Model):
-    name = models.CharField(max_length=200,default='فاعل خير')    
-    phone = models.CharField(max_length=10)    
-    wilaya = models.CharField(max_length=200)
-    commun = models.CharField(max_length=200)
-    zomra = models.CharField(max_length=3,default='الزمرة')
+class Person(models.Model):
+    BLOODTYPE_CHOICES=(
+            ('a+', 'A+'),
+            ('a-', 'A-'),
+            ('b+', 'B+'),
+            ('b-', 'B-'),
+            ('o+', 'O+'),
+            ('o-', 'O-'),
+            ('ab+', 'AB+'),
+            ('ab-', 'AB-'),
+    )
+
+    name = models.CharField(_('Name'), max_length=200, blank=True, null=True)    
+    phone = models.CharField(_('Phone number'), max_length=10)    
+    wilaya = models.CharField(_('Wilaya'), max_length=200)
+    commune = models.CharField(_('Commune'), max_length=200)
+    blood_type = models.CharField(_('Blood type'), choices=BLOODTYPE_CHOICES, max_length=3)
+    pub_date = models.DateTimeField(_('Publishing date'), auto_now_add=True)
     
-    pub_date = models.DateTimeField(auto_now_add= True)
     def whenpublished(self):
         now = timezone.now()
         

@@ -44,7 +44,7 @@ searchField.addEventListener("keyup", (e) => {
           <div class="card-body">
             <div class="d-flex justify-content-evenly flex-row-reverse
             align-self-center"><p class="fw-bold  pt-1 w-50 adrs  "> ${element.wilaya} ${element.commun}</p><i class="bi bi-geo-alt-fill  w-50  text-secondary fs-4 mx-auto"></i></div>
-            <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50 zomra "> ${element.zomra} </p><i class="bi bi-droplet-half text-danger w-50  fs-4 mx-auto"></i></div>
+            <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50 bloodType "> ${element.bloodType} </p><i class="bi bi-droplet-half text-danger w-50  fs-4 mx-auto"></i></div>
             <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50    ">  ${element.phone}</p><i class="bi bi-telephone-fill text-success  w-50  fs-4 mx-auto"></i></div>
 
           </div>
@@ -73,7 +73,7 @@ searchField.addEventListener("keyup", (e) => {
 
 const wilaya = document.querySelector('#sel');
 const commun = document.querySelector('#sel1');
-const zomra = document.querySelector('#sel2');
+const bloodType = document.querySelector('#sel2');
 
 wilaya.addEventListener('change',(e)=>{const WilayaValue = e.target.value;
     cardFilter.innerHTML='';
@@ -106,7 +106,7 @@ wilaya.addEventListener('change',(e)=>{const WilayaValue = e.target.value;
             <div class="card-body">
               <div class="d-flex justify-content-evenly flex-row-reverse
               align-self-center"><p class="fw-bold  pt-1 w-50 adrs  "> ${element.wilaya} ${element.commun}</p><i class="bi bi-geo-alt-fill  w-50  text-secondary fs-4 mx-auto"></i></div>
-              <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50 zomra "> ${element.zomra} </p><i class="bi bi-droplet-half text-danger w-50  fs-4 mx-auto"></i></div>
+              <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50 bloodType "> ${element.bloodType} </p><i class="bi bi-droplet-half text-danger w-50  fs-4 mx-auto"></i></div>
               <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50    ">  ${element.phone}</p><i class="bi bi-telephone-fill text-success  w-50  fs-4 mx-auto"></i></div>
   
              </div>
@@ -150,7 +150,7 @@ wilaya.addEventListener('change',(e)=>{const WilayaValue = e.target.value;
                     <div class="card-body">
                       <div class="d-flex justify-content-evenly flex-row-reverse
                       align-self-center"><p class="fw-bold  pt-1 w-50 adrs  "> ${element.wilaya} ${element.commun}</p><i class="bi bi-geo-alt-fill  w-50  text-secondary fs-4 mx-auto"></i></div>
-                      <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50 zomra "> ${element.zomra} </p><i class="bi bi-droplet-half text-danger w-50  fs-4 mx-auto"></i></div>
+                      <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50 bloodType "> ${element.bloodType} </p><i class="bi bi-droplet-half text-danger w-50  fs-4 mx-auto"></i></div>
                       <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50    ">  ${element.phone}</p><i class="bi bi-telephone-fill text-success  w-50  fs-4 mx-auto"></i></div>
           
                     </div>
@@ -172,9 +172,9 @@ wilaya.addEventListener('change',(e)=>{const WilayaValue = e.target.value;
             
         
         })
-        zomra.addEventListener('change',(e)=>{const zomraValue = e.target.value;
+        bloodType.addEventListener('change',(e)=>{const bloodTypeValue = e.target.value;
             cardFilter.innerHTML='';
-            console.log(zomraValue);
+            console.log(bloodTypeValue);
                   cardList.style.display = "none";
                   cardListOutput.style.display = "";
                   console.log("data", newData);
@@ -185,7 +185,7 @@ wilaya.addEventListener('change',(e)=>{const WilayaValue = e.target.value;
                   }
                   else{
                     newData.forEach(element => {
-                    if (element.zomra === zomraValue) {
+                    if (element.bloodType === bloodTypeValue) {
                         
                       
                     cardFilter.innerHTML+=`
@@ -198,7 +198,7 @@ wilaya.addEventListener('change',(e)=>{const WilayaValue = e.target.value;
                     <div class="card-body">
                       <div class="d-flex justify-content-evenly flex-row-reverse
                       align-self-center"><p class="fw-bold  pt-1 w-50 adrs  "> ${element.wilaya} ${element.commun}</p><i class="bi bi-geo-alt-fill  w-50  text-secondary fs-4 mx-auto"></i></div>
-                      <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50 zomra "> ${element.zomra} </p><i class="bi bi-droplet-half text-danger w-50  fs-4 mx-auto"></i></div>
+                      <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50 bloodType "> ${element.bloodType} </p><i class="bi bi-droplet-half text-danger w-50  fs-4 mx-auto"></i></div>
                       <div class="d-flex justify-content-evenly flex-row-reverse align-self-center"><p class="fw-bold  pt-1 w-50    ">  ${element.phone}</p><i class="bi bi-telephone-fill text-success  w-50  fs-4 mx-auto"></i></div>
           
                     </div>
